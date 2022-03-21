@@ -1,26 +1,36 @@
 from tkinter import *
 
-foablak= Tk()
-foablak.geometry("450x450")
+foablak = Tk()
+
+elsomezo = Label (foablak, text='Első mező:')
+elsomezo.grid (column=1, row=1)
+
+masodiksor = Label (foablak, text='Második mező:')
+masodiksor.grid (column=1, row=2)
+
+harmadiksor = Label (foablak, text='Harmadik mező:')
+harmadiksor.grid (column=1, row=3)
 
 
+elso = Entry (foablak)
+elso.grid (column=2, row=1)
 
-cimke1=Label(foablak, text="Első mező",
-                    fg="black")
-cimke1.grid(row=1, column=1)
-mezo1=Entry(foablak)
-mezo1.grid(row=1, column=2)
+masodik = Entry (foablak)
+masodik.grid (column=2, row=2)
 
-cimke2=Label(foablak, text="Második mező",
-                    fg="black")
-cimke2.grid()
+harmadik = Entry (foablak)
+harmadik.grid (column=2, row=3)
 
-mezo2=Entry(foablak)
-mezo2.grid(row=2, column=1)
-cimke3=Label(foablak, text="Harmadik mező",
-                    fg="black")                   
-cimke3.grid()
+can1 = Canvas(foablak,
+            width = 160,
+            height = 160,
+            bg = 'white')
+can1.grid (column=3, row=1, rowspan=3)
+photo = PhotoImage(file='xd.png')
+photo.subsample(2,2)
+item = can1.create_image(80,80,image= photo)
 
-mezo3=Entry(foablak)
-mezo3.grid()
+icon = PhotoImage(file='spongenon.png')
+foablak.iconphoto(True, icon)
+
 foablak.mainloop()
