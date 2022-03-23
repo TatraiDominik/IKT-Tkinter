@@ -1,12 +1,19 @@
 from tkinter import *
+import math
 
 foablak=Tk()
-def kiszamit():
-    r=int(mezo1.get())
-    m=int(mezo2.get)
-    eredmeny=3,14*r*r*m
-    mezo3.delete(0, END)
-    mez3.insert(0, +str(eredmeny))
+def szamitas ():
+    r = int(mezo1.get())
+    m = int(mezo2.get())
+    terfogat = round (math.pi * r * r * m, 2)
+    mezo3.delete (0, END)
+    mezo3.insert (0, str(terfogat)+' cm3' )
+    vassur = round (7.874 * terfogat, 2)
+    mezo4.delete (0, END)
+    mezo4.insert (0, str(vassuly)+' g' )
+    fasur = round (0.65 * terfogat, 2)
+    mezo5.delete (0, END)
+    mezo5.insert (0, str(fasuly)+' g' )
 
 cimke1=Label (foablak, text="Sugár (cm):" )
 cimke1.grid(row=1, column=1)
@@ -18,7 +25,7 @@ cimke2.grid(row=2, column=1)
 mezo2=Entry(foablak)
 mezo2.grid(row=2, column=2)
 
-gomb1=Button(foablak, text="Kiszámít", command=kiszamit)
+gomb1=Button(foablak, text="Kiszámít", command=szamitas)
 gomb1.grid(row=3, column=1, sticky='e')
 
 cimke3=Label (foablak, text="Térfogat)" )
