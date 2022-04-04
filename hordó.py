@@ -15,10 +15,10 @@ def szamitas ():
     borocska= float(mezo1.get())
     
     if r>0 and m>0:
-            terfogat = round (math.pi * r * r * m /1000, 2)
+            terfogat = round (math.pi * r * r * m /1000, )
             mezo4.delete (0, END)
             mezo4.insert (0, str(terfogat)+"dm3" )
-            szazalek=round (borocska*(100/terfogat), 2)
+            szazalek=round (borocska*(100/terfogat), )
             belefer= terfogat-borocska
             mezo6.delete (0, END)
             mezo6.insert (0, str(belefer)+"l" )
