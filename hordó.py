@@ -26,6 +26,8 @@ def szamitas ():
     elif r==0 or m==0:
         mezo4.delete(0, END)
         mezo4.insert(0, str("0 nem lehet adat"))
+        mezo5.delete(0, END)
+        mezo6.delete(0,END)
     else:
         mezo4.delete(0, END)
         mezo4.insert(0, str("pozitív szám kell"))
