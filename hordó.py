@@ -2,17 +2,33 @@ from tkinter import *
 import math
 
 foablak=Tk()
+foablak.geometry("460x460")
+s=''
 
 def szamitas ():
-    r = int(mezo2.get())
-    m = int(mezo3.get())
-    borocska= int(mezo1.get())
+    if not s:
+        mezo4.delete(0, END)
+        mezo4.insert(0, str("Szám adat kell"))
 
-    terfogat = round (math.pi * r * r * m /1000, 2)
-    mezo4.delete (0, END)
-    mezo4.insert (0, str(terfogat)+"dm3" )
+    r = float(mezo2.get())
+    m = float(mezo3.get())
+    borocska= float(mezo1.get())
     
-    szazalek=round (borocska*(100/terfogat), 2)
+    if r>0 and m>0:
+            terfogat = round (math.pi * r * r * m /1000, 2)
+            mezo4.delete (0, END)
+            mezo4.insert (0, str(terfogat)+"dm3" )
+            szazalek=round (borocska*(100/terfogat), 2)
+            belefer= terfogat-borocska
+            mezo6.delete (0, END)
+            mezo6.insert (0, str(belefer)+"l" )
+               
+    elif r==0 or m==0:
+        mezo4.delete(0, END)
+        mezo4.insert(0, str("0 nem lehet adat"))
+    else:
+        mezo4.delete(0, END)
+        mezo4.insert(0, str("pozitív szám kell"))
 
     if borocska>= terfogat:
         mezo5.delete(0,  END)
@@ -20,12 +36,19 @@ def szamitas ():
 
     elif borocska<=0:   
         mezo5.delete(0, END)
+        mezo5.insert(0, str("pozitív szám kell"))
+
+    elif borocska==0:   
+        mezo5.delete(0, END)
         mezo5.insert(0, str("0 nem lehet adat"))
 
     else:
         mezo5.delete (0, END)
         mezo5.insert(0, str(szazalek)+"%")
-    
+
+    if terfogat-borocska<=0 :
+        mezo6.delete(0, END)
+        mezo6.insert(0, str("Nem fér tőbb bor bele"))
     
 cimke1=Label(foablak, text="Hány l bor?")
 cimke1.grid(row=0, column=1)
@@ -55,5 +78,9 @@ eredmeny2.grid(row=6, column=1)
 mezo5=Entry(foablak)
 mezo5.grid(row=6, column=2)
 
+eredmeny3=Label(foablak, text="Ennyi fér még bele")
+eredmeny3.grid(row=7, column=1)
+mezo6=Entry(foablak)
+mezo6.grid(row=7, column=2)
 
 foablak.mainloop()
