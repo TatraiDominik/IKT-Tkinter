@@ -11,9 +11,15 @@ def szamitas():
         a=int(mezo1.get())
         b=int(mezo2.get())
         c=int(mezo3.get())
-        felsz=2*(a*b+a*c+b*c)
-        emezo.delete(0,END)
-        emezo.insert(0, str(felsz))
+
+        if a>0 or b>0 or c>0:
+            felsz=2*(a*b+a*c+b*c)
+            emezo.delete(0,END)
+            emezo.insert(0, str(felsz))
+
+        else:
+            emezo.delete(0,END)
+            emezo.insert(0, str("pozitív szám kell"))
 
     ablak2=Toplevel(foablak)
     ablak2.geometry("300x300")
