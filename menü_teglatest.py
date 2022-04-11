@@ -3,90 +3,84 @@ from tkinter import *
 foablak=Tk()
 
 #felszin
-def szamitas():
 
-    ablak2=Toplevel(foablak)
-    ablak2.geometry("300x300")
-
-    mezo4=Entry(ablak2)
-    mezo4.grid(row=0, column=1)
-    mezo5=Entry(ablak2)
-    mezo5.grid(row=1, column=1)
-
-    aoldal=Label(foablak, text="a: ")
-    aoldal.grid(row=1, column=0)
-    mezo1=Entry(foablak)
-    mezo1.grid(row=1, column=1)
-    boldal=Label(foablak, text="b: ")
-    boldal.grid(row=2, column=0)
-    mezo2=Entry(foablak)
-    mezo2.grid(row=2, column=1)
-    coldal=Label(foablak, text="c: ")
-    coldal.grid(row=3, column=0)
-    mezo3=Entry(foablak)
-    mezo3.grid(row=3, column=1)
+     
     
-    gomb1=Button(foablak, text="Számítás", command=ujablak)
-    gomb1.grid(row=4, column=1)
-    mezo4=Entry(ablak2)
-    mezo4.grid(row=5, column=0)
-    ablak2.mainloop()
-
-    a=int(mezo1.get())
-    b=int(mezo2.get())
-    c=int(mezo3.get())
-    felsz=2*(a*b+a*c+b*c)
-    mezo4.delete(0,END)
-    mezo4.insert(0, str(felszin))
-    ablak3.mainloop()
-
-#terfogat
-def terfogat():
+def szamitas():
+    def felszinsz():
+        a=int(mezo1.get())
+        b=int(mezo2.get())
+        c=int(mezo3.get())
+        felsz=2*(a*b+a*c+b*c)
+        emezo.delete(0,END)
+        emezo.insert(0, str(felsz))
 
     ablak2=Toplevel(foablak)
     ablak2.geometry("300x300")
-    felszin=Message(ablak2, text="Felszín")
-    felszin.grid(row=0, column=0)
-    terfogat=Message(ablak2, text="Terfogat")
-    terfogat.grid(row=1, column=0)
-    mezo4=Entry(ablak2)
-    mezo4.grid(row=0, column=1)
-    mezo5=Entry(ablak2)
-    mezo5.grid(row=1, column=1)
 
-    aoldal=Label(foablak, text="a: ")
+    aoldal=Label(ablak2, text="a: ")
     aoldal.grid(row=1, column=0)
-    mezo1=Entry(foablak)
+    mezo1=Entry(ablak2)
     mezo1.grid(row=1, column=1)
-    boldal=Label(foablak, text="b: ")
+    boldal=Label(ablak2, text="b: ")
     boldal.grid(row=2, column=0)
-    mezo2=Entry(foablak)
+    mezo2=Entry(ablak2)
     mezo2.grid(row=2, column=1)
-    coldal=Label(foablak, text="c: ")
+    coldal=Label(ablak2, text="c: ")
     coldal.grid(row=3, column=0)
-    mezo3=Entry(foablak)
+    mezo3=Entry(ablak2)
     mezo3.grid(row=3, column=1)
 
-    gomb1=Button(foablak, text="Számítás", command=ujablak)
+    gomb1=Button(ablak2, text="Számítás", command=felszinsz)
     gomb1.grid(row=4, column=1)
+    erdemeny=Label(ablak2,text="Eredmény:")
+    erdemeny.grid(row=5, column=0)
+    emezo=Entry(ablak2)
+    emezo.grid(row=5, column=1)
+    
     ablak2.mainloop()
+#terfogat
 
-    def szamitas():
+def terfogat():
+    def terfogatsz():
         a=int(mezo1.get())
         b=int(mezo2.get())
         c=int(mezo3.get())
         terf=a*b*c
-        mezo5.delete(0, END)
-        mezo5.insert(0, str(terfogat))
-    ablak4.mainloop()
+        emezo.delete(0, END)
+        emezo.insert(0, str(terf))
+
+    ablak3=Toplevel(foablak)
+    ablak3.geometry("300x300")
+    
+    aoldal=Label(ablak3, text="a: ")
+    aoldal.grid(row=1, column=0)
+    mezo1=Entry(ablak3)
+    mezo1.grid(row=1, column=1)
+    boldal=Label(ablak3, text="b: ")
+    boldal.grid(row=2, column=0)
+    mezo2=Entry(ablak3)
+    mezo2.grid(row=2, column=1)
+    coldal=Label(ablak3, text="c: ")
+    coldal.grid(row=3, column=0)
+    mezo3=Entry(ablak3)
+    mezo3.grid(row=3, column=1)
+    
+    gomb1=Button(ablak3, text="Számítás", command=terfogatsz)
+    gomb1.grid(row=4, column=1)
+    eredmeny=Label(ablak3, text="Eredmény")
+    eredmeny.grid(row=5, column=0)
+    emezo=Entry(ablak3)
+    emezo.grid(row=5, column=1)
+    ablak3.mainloop()
 
 def nevjegy():
-    ablak5=Toplevel(foablak)
-    uz2=Message(ablak2, text="Készítette Tátrai Dominik\n2022.04.06", width=300)
-    gomb2= Button(ablak2, text="Kilép", command=ablak2.destroy)
+    ablak4=Toplevel(foablak)
+    uz2=Message(ablak4, text="Készítette Tátrai Dominik\n2022.04.06", width=300)
     uz2.grid()
+    gomb2= Button(ablak4, text="Kilép", command=ablak4.destroy)
     gomb2.grid()
-    ablak5.mainloop()
+    ablak4.mainloop()
 
 menusor=Frame(foablak)
 menusor.pack(side=TOP, fill=X)
