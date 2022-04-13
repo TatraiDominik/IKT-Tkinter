@@ -1,7 +1,7 @@
 from tkinter import *
 import math
 foablak=Tk()
-
+ures=None
 #felszin T
 s=''        
 def szamitas():
@@ -14,14 +14,18 @@ def szamitas():
         b=int(mezo2.get())
         c=int(mezo3.get())
 
-        if a>0 or b>0 or c>0:
+        if a==ures or b==ures or c==ures:
+            emezo.delete(0, END)
+            emezo.insert(0, str("Szám adat kell"))
+
+        if a<=0 or b<=0 or c<=0:
+            emezo.delete(0,END)
+            emezo.insert(0, str("pozitív szám kell"))
+        else:
             felsz=2*(a*b+a*c+b*c)
             emezo.delete(0,END)
             emezo.insert(0, str(felsz))
-
-        else:
-            emezo.delete(0,END)
-            emezo.insert(0, str("pozitív szám kell"))
+            
 
     ablak2=Toplevel(foablak)
     ablak2.geometry("300x300")
@@ -49,9 +53,10 @@ def szamitas():
     ablak2.mainloop()
 
 #terfogat T
+ 
 def terfogat():
     def terfogatsz():
-
+        
         if not s:
             emezo.delete(0, END)
             emezo.insert(0, str("Szám adat kell"))
@@ -60,13 +65,18 @@ def terfogat():
         b=int(mezo2.get())
         c=int(mezo3.get())
 
-        if a>0 or b>0 or c>0:
+        if a==ures or b==ures or c==ures:
+            emezo.delete(0, END)
+            emezo.insert(0, str("Szám adat kell"))
+
+        if a<=0 or b<=0 or c<=0:
+            emezo.delete(0, END)
+            emezo.insert(0, str("Pozitív szám kell"))
+        else:
             terf=a*b*c
             emezo.delete(0, END)
             emezo.insert(0, str(terf))
-        else:
-            emezo.delete(0, END)
-            emezo.insert(0, str("Pozitív szám kell"))
+           
 
     ablak3=Toplevel(foablak)
     ablak3.geometry("300x300")
@@ -94,18 +104,31 @@ def terfogat():
 #terfogat vége
 
 #Felszín H
+ 
 def hengerterf():
     def Hterfogatszam():
+        if not s:
+            emezo.delete(0, END)
+            emezo.insert(0, str("Szám adat kell"))
         r = int(mezo1.get())
         m = int(mezo2.get())
-        terfogat = round (math.pi * r * r * m, 2)
-        emezo.delete (0, END)
-        emezo.insert (0, str(terfogat))
+        if r==ures or m==ures :
+            emezo.delete(0, END)
+            emezo.insert(0, str("Szám adat kell"))
+  
+        if r<=0 or m<=0:
+            emezo.delete (0, END)
+            emezo.insert (0, str("Pozitív szám kell"))
+        else:
+            terfogat = round (math.pi * r * r * m, 2)
+            emezo.delete(0, END)
+            emezo.insert(0, str(terfogat))
+            
 
     ablak5=Toplevel(foablak)
 
-    suagr=Label(ablak5, text="Sugár: ")
-    suagr.grid(row=1, column=0)
+    sugar=Label(ablak5, text="Sugár: ")
+    sugar.grid(row=1, column=0)
     mezo1=Entry(ablak5)
     mezo1.grid(row=1, column=1)
     magassag=Label(ablak5, text="Magasság: ")
@@ -121,24 +144,34 @@ def hengerterf():
     emezo.grid(row=5, column=1)
 
     ablak5.mainloop()
-
+    
+ 
 def Hfelszin():
     def Hfelszinszam():
-        r = int(mezo1.get())
-        m = int(mezo2.get())
+        
         if not s:
             emezo.delete(0, END)
             emezo.insert(0, str("Szám adat kell"))
-        if r>0 or m>0:
+
+        r = int(mezo1.get())
+        m = int(mezo2.get())
+
+        if r==ures or m==ures :
+            emezo.delete(0, END)
+            emezo.insert(0, str("Szám adat kell"))
+
+        if r<=0 or m<=0:
+            emezo.delete(0, END)
+            emezo.insert(0, str("Pozitív szám kell"))
+        else:
             felszin = round (2*r*r*math.pi+2*r*math.pi*m )
             emezo.delete (0, END)
             emezo.insert (0, str(felszin))
-        else:
-            emezo.delete(0, END)
-            emezo.insert(0, str("Pozitív szám kell"))
+            
+
     ablak6=Toplevel(foablak)
-    suagr=Label(ablak6, text="Sugár: ")
-    suagr.grid(row=1, column=0)
+    sugar=Label(ablak6, text="Sugár: ")
+    sugar.grid(row=1, column=0)
     mezo1=Entry(ablak6)
     mezo1.grid(row=1, column=1)
     magassag=Label(ablak6, text="Magasság: ")
